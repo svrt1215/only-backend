@@ -8,8 +8,9 @@ dotenv.config();
 
 const app = express();
 
+
 const corsOptions = {
-  origin: ['https://clg-web-z5c9.vercel.app', 'http://localhost:5173'],
+  origin: ['https://only-frontend.vercel.app', 'http://localhost:5173'],
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
