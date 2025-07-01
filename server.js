@@ -8,7 +8,6 @@ dotenv.config();
 
 const app = express();
 
-
 const corsOptions = {
   origin: ['https://only-frontend-r34w.vercel.app', 'http://localhost:5173'],
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
@@ -32,6 +31,3 @@ mongoose.connect(process.env.MONGO_URI)
   .catch((err) => {
     console.error('Database connection error:', err);
   });
-
-
-  // app.use

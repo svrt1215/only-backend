@@ -21,7 +21,6 @@ app.options('*', cors(corsOptions)); // Preflight
 app.use(express.json());
 app.use('/api/results', resultRoutes);
 
-// Initialize mongoose connection on first cold start
 let isConnected = false;
 async function initDB() {
   if (isConnected) return;
