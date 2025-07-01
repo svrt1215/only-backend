@@ -10,7 +10,7 @@ const app = express();
 
 
 const corsOptions = {
-  origin: ['https://only-frontend.vercel.app', 'http://localhost:5173'],
+  origin: ['https://only-frontend-r34w.vercel.app', 'http://localhost:5173'],
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
@@ -32,3 +32,6 @@ mongoose.connect(process.env.MONGO_URI)
   .catch((err) => {
     console.error('Database connection error:', err);
   });
+
+
+  // app.use
