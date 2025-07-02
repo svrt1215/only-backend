@@ -3,22 +3,42 @@ import Result from '../models/Results.js';
 
 const router = express.Router();
 
+// router.post('/', async (req, res) => {
+//   try {
+//     const dob = req.body.dob;
+//     const formattedDob = formatToDDMMYYYY(dob);
+    
+//     const result = new Result({
+//       ...req.body,
+//       enrollment: req.body.enrollment.toLowerCase().trim(),
+//       dob: formattedDob
+//     });
+
+//     console.log(req.body,"kapil");
+
+//     await result.save();
+//     res.status(201).json({ message: 'Result uploaded successfully' });
+//   } catch (error) {
+//     console.error('Error saving result:', error);
+//     res.status(500).json({ message: 'Server error' });
+//   }
+// });
+
 router.post('/', async (req, res) => {
   try {
-    const dob = req.body.dob;
-    const formattedDob = formatToDDMMYYYY(dob);
-    
     const result = new Result({
       ...req.body,
       enrollment: req.body.enrollment.toLowerCase().trim(),
-      dob: formattedDob
+      dob: req.body.dob
     });
+
+    console.log("Saving:", JSON.stringify(result, null, 2));
 
     await result.save();
     res.status(201).json({ message: 'Result uploaded successfully' });
   } catch (error) {
     console.error('Error saving result:', error);
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: 'Server error', error: error.message });
   }
 });
 

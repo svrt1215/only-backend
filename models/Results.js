@@ -1,9 +1,10 @@
 import mongoose from 'mongoose';
 
-const semesterResultSchema = new mongoose.Schema({
-  marks: { type: Map, of: Number },
-  total: String,
-  status: String
+const yearResultSchema = new mongoose.Schema({
+  year: { type: String, required: true },   
+  obtained: { type: Number, required: true },
+  outOf: { type: Number, required: true },
+  status: { type: String, required: true },
 }, { _id: false });
 
 const resultSchema = new mongoose.Schema({
@@ -18,12 +19,7 @@ const resultSchema = new mongoose.Schema({
   studentType: String,
   institute: String,
   course: String,
-  result: String,
-  semester: String,
-  semesterResults: {
-    type: Map,
-    of: semesterResultSchema
-  }
+  results: [yearResultSchema]
 }, { timestamps: true });
 
 export default mongoose.model('Result', resultSchema);
