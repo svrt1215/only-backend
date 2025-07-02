@@ -3,27 +3,6 @@ import Result from '../models/Results.js';
 
 const router = express.Router();
 
-// router.post('/', async (req, res) => {
-//   try {
-//     const dob = req.body.dob;
-//     const formattedDob = formatToDDMMYYYY(dob);
-    
-//     const result = new Result({
-//       ...req.body,
-//       enrollment: req.body.enrollment.toLowerCase().trim(),
-//       dob: formattedDob
-//     });
-
-//     console.log(req.body,"kapil");
-
-//     await result.save();
-//     res.status(201).json({ message: 'Result uploaded successfully' });
-//   } catch (error) {
-//     console.error('Error saving result:', error);
-//     res.status(500).json({ message: 'Server error' });
-//   }
-// });
-
 router.post('/', async (req, res) => {
   try {
     const result = new Result({
@@ -41,29 +20,6 @@ router.post('/', async (req, res) => {
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 });
-
-// router.get('/', async (req, res) => {
-//   const { enrollment, dob } = req.query;
-
-//   try {
-//     const formattedSearchDob = formatToDDMMYYYY(dob);
-    
-//     const student = await Result.findOne({ 
-//       enrollment: enrollment.toLowerCase().trim(), 
-//       dob: formattedSearchDob
-//     });
-
-//     if (!student) {
-//       return res.status(404).json({ message: 'Student not found' });
-//     }
-
-//     res.json(student);
-//   } catch (error) {
-//     console.error('Fetch Error:', error);
-//     res.status(500).json({ message: 'Server error' });
-//   }
-// });
-
 
 router.get('/', async (req, res) => {
   const { enrollment, dob } = req.query;
