@@ -42,25 +42,39 @@ router.post('/', async (req, res) => {
   }
 });
 
+// router.get('/', async (req, res) => {
+//   const { enrollment, dob } = req.query;
+
+//   try {
+//     const formattedSearchDob = formatToDDMMYYYY(dob);
+    
+//     const student = await Result.findOne({ 
+//       enrollment: enrollment.toLowerCase().trim(), 
+//       dob: formattedSearchDob
+//     });
+
+//     if (!student) {
+//       return res.status(404).json({ message: 'Student not found' });
+//     }
+
+//     res.json(student);
+//   } catch (error) {
+//     console.error('Fetch Error:', error);
+//     res.status(500).json({ message: 'Server error' });
+//   }
+// });
+
+
 router.get('/', async (req, res) => {
   const { enrollment, dob } = req.query;
-
   try {
-    const formattedSearchDob = formatToDDMMYYYY(dob);
-    
-    const student = await Result.findOne({ 
-      enrollment: enrollment.toLowerCase().trim(), 
-      dob: formattedSearchDob
+    const student = await Result.findOne({
+      enrollment: enrollment.toLowerCase().trim(),
+      dob
     });
-
     if (!student) {
-      console.log('No student found for:', {
-        enrollment: enrollment.toLowerCase().trim(),
-        dob: formattedSearchDob
-      });
       return res.status(404).json({ message: 'Student not found' });
     }
-
     res.json(student);
   } catch (error) {
     console.error('Fetch Error:', error);
