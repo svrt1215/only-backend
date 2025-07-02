@@ -21,5 +21,4 @@ const resultSchema = new mongoose.Schema({
   course: String,
   results: [yearResultSchema]
 }, { timestamps: true });
-
 export default mongoose.model('Result', resultSchema);
